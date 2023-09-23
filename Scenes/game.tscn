@@ -9,4 +9,7 @@ script = ExtResource("1_4rlv6")
 [node name="Player" parent="." instance=ExtResource("1_b43xo")]
 position = Vector2(300, 293)
 
-[connection signal="fire" from="Player" to="." method="_on_player_fire"]
+[node name="PlayerSpawn" type="Marker2D" parent="."]
+position = Vector2(597, 572)
+
+[node name="BulletContainer" type="Node2D" parent="."]

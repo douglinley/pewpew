@@ -1,6 +1,6 @@
-extends CharacterBody2D
+class_name Player extends CharacterBody2D
 
-signal fire(bullet_scene : PackedScene)
+signal fire(bullet_scene : PackedScene, pos: Vector2)
 
 @export var speed: float = 400.0
 @onready var muzzle : Marker2D = $Muzzle
@@ -23,5 +23,8 @@ func handle_input() -> void:
 	velocity = input_direction * speed
 		
 	if Input.is_action_just_pressed("shoot"):
-		fire.emit(bullet_scene)
-		scale = Vector2(.5, 1.5)
+		pew()
+		
+func pew():
+	fire.emit(bullet_scene, muzzle.global_position)
+	scale = Vector2(.5, 1.5)
