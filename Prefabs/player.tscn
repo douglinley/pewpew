@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://w2ta7sgydn1l"]
+
+[ext_resource type="Texture2D" uid="uid://c5p65r7et3qv4" path="res://sprites/ship_J.png" id="1_6kpvf"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="2_rfnp3"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_acvvt"]
+radius = 5.0
+height = 32.0
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("2_rfnp3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_6kpvf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6)
+shape = SubResource("CapsuleShape2D_acvvt")
+
+[node name="Muzzle" type="Marker2D" parent="."]
+position = Vector2(0, -28)
