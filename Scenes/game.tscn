@@ -1,15 +1,72 @@
-[gd_scene load_steps=3 format=3 uid="uid://bw2x54ih8ckew"]
+[gd_scene load_steps=6 format=3 uid="uid://bw2x54ih8ckew"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_4rlv6"]
 [ext_resource type="PackedScene" uid="uid://w2ta7sgydn1l" path="res://Prefabs/player.tscn" id="1_b43xo"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2vemn"]
+emission_shape = 3
+emission_box_extents = Vector3(360, 0, 0)
+particle_flag_disable_z = true
+spread = 0.0
+gravity = Vector3(0, 25, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_msumd"]
+emission_shape = 3
+emission_box_extents = Vector3(360, 0, 0)
+particle_flag_disable_z = true
+spread = 0.0
+gravity = Vector3(0, 50, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 2.0
+scale_max = 2.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ghico"]
+emission_shape = 3
+emission_box_extents = Vector3(360, 0, 0)
+particle_flag_disable_z = true
+spread = 0.0
+gravity = Vector3(0, 100, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 3.0
+scale_max = 3.0
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_4rlv6")
 
 [node name="Player" parent="." instance=ExtResource("1_b43xo")]
-position = Vector2(300, 293)
+position = Vector2(300, 898)
 
 [node name="PlayerSpawn" type="Marker2D" parent="."]
-position = Vector2(597, 572)
+position = Vector2(363, 935)
 
 [node name="BulletContainer" type="Node2D" parent="."]
+
+[node name="StarfieldContainer" type="Node2D" parent="."]
+
+[node name="StarfieldFar" type="GPUParticles2D" parent="StarfieldContainer"]
+z_index = -100
+position = Vector2(360, -41)
+amount = 5000
+process_material = SubResource("ParticleProcessMaterial_2vemn")
+lifetime = 140.0
+preprocess = 20.0
+
+[node name="StarfieldMid" type="GPUParticles2D" parent="StarfieldContainer"]
+z_index = -100
+position = Vector2(360, -41)
+amount = 1000
+process_material = SubResource("ParticleProcessMaterial_msumd")
+lifetime = 140.0
+preprocess = 20.0
+
+[node name="StarfieldClose" type="GPUParticles2D" parent="StarfieldContainer"]
+z_index = -100
+position = Vector2(360, -41)
+amount = 500
+process_material = SubResource("ParticleProcessMaterial_ghico")
+lifetime = 140.0
+preprocess = 20.0
