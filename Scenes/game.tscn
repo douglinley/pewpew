@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bw2x54ih8ckew"]
+[gd_scene load_steps=8 format=3 uid="uid://bw2x54ih8ckew"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_4rlv6"]
 [ext_resource type="PackedScene" uid="uid://w2ta7sgydn1l" path="res://Prefabs/player.tscn" id="1_b43xo"]
+[ext_resource type="Texture2D" uid="uid://b1j67wq4l2rsl" path="res://sprites/enemy3.png" id="3_s5jsy"]
+[ext_resource type="Script" path="res://scripts/oscillate.gd" id="4_yq2yc"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2vemn"]
 emission_shape = 3
@@ -70,3 +72,10 @@ amount = 500
 process_material = SubResource("ParticleProcessMaterial_ghico")
 lifetime = 140.0
 preprocess = 20.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(361, 14)
+texture = ExtResource("3_s5jsy")
+script = ExtResource("4_yq2yc")
+amplitude = 75
+freq = 20
